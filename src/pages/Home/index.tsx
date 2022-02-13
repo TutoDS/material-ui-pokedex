@@ -35,24 +35,26 @@ const Home = () => {
 				}
 			});
 
-			setPokemons((prevState) => {
-				return [
-					...prevState,
-					...results.map((pokemon: { name: string; url: string }) => {
-						const arrayToGetId = pokemon.url
-							.split('/')
-							.filter((e) => e);
+			setPokemons((prevState) => [
+				...prevState,
+				...results.map((pokemon: { name: string; url: string }) => {
+					// Get Pokemon id from url (remove / and get las position - id)
+					const arrayToGetId = pokemon.url
+						.split('/')
+						.filter((e) => e);
 
-						return {
-							id: arrayToGetId[arrayToGetId.length - 1],
-							...pokemon,
-							image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-								arrayToGetId[arrayToGetId.length - 1]
-							}.png`
-						};
-					})
-				];
-			});
+					// Get last position (id) and transform to number
+					const id = parseInt(arrayToGetId[arrayToGetId.length - 1]);
+
+					return {
+						id,
+						...pokemon,
+						image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+							arrayToGetId[arrayToGetId.length - 1]
+						}.png`
+					};
+				})
+			]);
 
 			if (next) {
 				console.log(next);
@@ -74,8 +76,6 @@ const Home = () => {
 		} catch (error: any) {
 			console.log(error);
 		}
-
-		// eslint-disable-next-line
 	}, [pagination]);
 
 	useEffect(() => {

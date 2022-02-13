@@ -9,7 +9,7 @@
 		"build": "webpack --config webpack.config.js --env env=production",
 		"lint": "eslint --fix \"./src/**/*.{js,jsx,ts,tsx,json}\"",
 		"format": "prettier --write \"./src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-		"prepare": "husky install && npx husky add .husky/pre-commit \"npx lint-staged\""
+		"prepare": "husky install"
 	},
 	"dependencies": {
 		"@emotion/react": "^11.7.1",

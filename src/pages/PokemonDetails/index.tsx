@@ -1,8 +1,9 @@
-import { ArrowDropDown } from '@mui/icons-material';
+import { ArrowDropDown, ChevronLeft } from '@mui/icons-material';
 import {
 	Accordion,
 	AccordionDetails,
 	AccordionSummary,
+	Button,
 	Card,
 	CardContent,
 	CardMedia,
@@ -15,14 +16,19 @@ import { Box } from '@mui/system';
 import Loading from 'components/Loading';
 import PokemonTypeLabel from 'components/PokemonTypeLabel';
 import { useCallback, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { PokemonType } from 'shared/@types/Pokemon';
 import pokemonApi from 'shared/services/pokemonApi';
 import { Identifier, PokeImage } from './styles';
 
 const PokemonDetails = () => {
+	// Route Params
 	const { id } = useParams();
 
+	// Navigate from React Router DOM
+	const navigate = useNavigate();
+
+	// States
 	const [pokemon, setPokemon] = useState<PokemonType>();
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -218,6 +224,14 @@ const PokemonDetails = () => {
 									</AccordionDetails>
 								</Accordion>
 							</Stack>
+							<Button
+								variant={'outlined'}
+								sx={{ mt: 4 }}
+								onClick={() => navigate(-1)}
+								startIcon={<ChevronLeft />}
+							>
+								Back
+							</Button>
 						</Grid>
 					</Grid>
 				)}
