@@ -40,6 +40,10 @@ const PokemonDetails = () => {
 
 			setPokemon(data);
 		} catch (error: any) {
+			if (error.response && error.response.status === 404) {
+				navigate('/404');
+			}
+
 			console.log(error);
 		}
 

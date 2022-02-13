@@ -57,7 +57,6 @@ const Home = () => {
 			]);
 
 			if (next) {
-				console.log(next);
 				setPagination((prevState) => ({
 					...prevState,
 					offset: prevState.offset + 20,
@@ -72,7 +71,6 @@ const Home = () => {
 					hasMore: true
 				}));
 			}
-			console.log(pagination);
 		} catch (error: any) {
 			console.log(error);
 		}
@@ -103,7 +101,11 @@ const Home = () => {
 							sm={4}
 							md={3}
 						>
-							<PokemonCard pokemon={pokemon} key={pokemon.name} />
+							<PokemonCard
+								sx={{ height: '100%' }}
+								pokemon={pokemon}
+								key={pokemon.name}
+							/>
 						</Grid>
 					))}
 				</Grid>
