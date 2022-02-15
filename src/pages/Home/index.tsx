@@ -49,9 +49,9 @@ const Home = () => {
 					return {
 						id,
 						...pokemon,
-						image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+						image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/${
 							arrayToGetId[arrayToGetId.length - 1]
-						}.png`
+						}.svg`
 					};
 				})
 			]);

@@ -48,7 +48,7 @@ const PokemonDetails = () => {
 		}
 
 		setIsLoading(false);
-	}, [id]);
+	}, [id, navigate]);
 
 	useEffect(() => {
 		getData();
@@ -65,7 +65,10 @@ const PokemonDetails = () => {
 							<Card>
 								<CardMedia
 									component='img'
-									image={pokemon?.sprites.front_default}
+									image={
+										pokemon?.sprites.other.dream_world
+											.front_default
+									}
 									alt={pokemon?.name}
 									height={150}
 									sx={{
