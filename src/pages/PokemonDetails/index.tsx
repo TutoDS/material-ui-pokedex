@@ -6,7 +6,6 @@ import {
 	Button,
 	Card,
 	CardContent,
-	CardMedia,
 	Container,
 	Grid,
 	Stack,
@@ -19,7 +18,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { PokemonType } from 'shared/@types/Pokemon';
 import pokemonApi from 'shared/services/pokemonApi';
-import { Identifier, PokeImage } from './styles';
+import { Identifier, Image, PokeImage } from './styles';
 
 const PokemonDetails = () => {
 	// Route Params
@@ -63,19 +62,14 @@ const PokemonDetails = () => {
 					<Grid spacing={2} container>
 						<Grid item xs={12} sm={4}>
 							<Card>
-								<CardMedia
-									component='img'
-									image={
-										pokemon?.sprites.other.dream_world
-											.front_default
-									}
-									alt={pokemon?.name}
-									height={150}
-									sx={{
-										objectFit: 'contain'
-									}}
-								/>
 								<CardContent sx={{ textAlign: 'center' }}>
+									<Image
+										src={
+											pokemon?.sprites.other.dream_world
+												.front_default
+										}
+										alt={pokemon?.name}
+									/>
 									<Typography
 										sx={{ textTransform: 'capitalize' }}
 										variant={'h5'}
